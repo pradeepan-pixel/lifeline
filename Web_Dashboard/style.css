@@ -1,0 +1,57 @@
+/* File: Web_Dashboard/style.css */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Inter, system-ui, Arial, sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height:100vh; padding:20px; }
+.container { max-width:1280px; margin:0 auto; }
+header { text-align:center; color:#fff; margin-bottom:30px; }
+header h1 { font-size:2.4rem; margin-bottom:6px; }
+header p { opacity:.9; }
+
+.dashboard { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap:20px; align-items:start; }
+.card { background:#fff; border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.12); transition: transform .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-4px); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+.card h2 { color:#2c3e50; margin-bottom:12px; border-bottom:2px solid #f0f2f5; padding-bottom:8px; }
+.card-wide { grid-column: 1 / -1; }
+
+/* Map */
+#map { width:100%; height:360px; border-radius:12px; border:1px solid #eaecef; }
+.map-legend { margin-top:10px; display:flex; gap:16px; font-size:.95rem; color:#2c3e50; }
+.legend-item { display:inline-flex; align-items:center; gap:6px; }
+.legend-dot { width:12px; height:12px; border-radius:50%; display:inline-block; border:2px solid #2c3e50; }
+.legend-dot.amb { background:#1f78ff; }
+.legend-dot.sig-normal { background:#2ecc71; }
+.legend-dot.sig-emergency { background:#e74c3c; }
+
+/* Key-Value grid */
+.kv { display:grid; grid-template-columns: 1fr 1fr; gap:8px 12px; }
+.kv .k { color:#6b7280; font-weight:600; }
+.kv .v { color:#111827; justify-self:end; }
+.kv div { display:grid; grid-template-columns: 1fr auto; padding:6px 8px; background:#f9fafb; border-radius:8px; }
+
+/* Traffic light retained styling */
+.traffic-light { display:flex; flex-direction:column; align-items:center; margin:20px 0; }
+.light { width:60px; height:60px; border-radius:50%; margin:5px; border:3px solid #333; opacity:.3; transition: all .3s ease; }
+.light.active { opacity:1; box-shadow:0 0 20px currentColor; }
+.red { background:#e74c3c; } .yellow { background:#f1c40f; } .green { background:#27ae60; }
+
+/* Table */
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { text-align:left; padding:10px 12px; border-bottom:1px solid #eef2f7; }
+.table th { background:#f8fafc; color:#334155; font-weight:700; position:sticky; top:0; z-index:1; }
+.status.ok { color:#16a34a; font-weight:700; }
+.status.danger { color:#dc2626; font-weight:700; }
+
+/* Chart */
+canvas { width:100%; }
+
+/* Logs */
+.logs-container { max-height:220px; overflow-y:auto; background:#0f172a; color:#e2e8f0; padding:14px; border-radius:10px; font-family: "JetBrains Mono", "Courier New", monospace; font-size:.9rem; border:1px solid #1f2937; }
+.logs-container p { padding:2px 0; opacity:.95; }
+
+#traffic-state { font-weight:bold; color:#27ae60; }
+
+@media (max-width:768px){
+  .dashboard { grid-template-columns:1fr; }
+  header h1 { font-size:2rem; }
+  .card { padding:18px; }
+  #map { height:300px; }
+}

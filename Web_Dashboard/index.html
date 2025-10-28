@@ -1,0 +1,92 @@
+<!-- File: Web_Dashboard/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Life Lane - Traffic Control Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚑 Life Lane Dashboard</h1>
+      <p>Real-time Ambulance & Traffic Signal Monitoring (Firebase RTDB)</p>
+    </header>
+
+    <div class="dashboard">
+      <!-- MAP PANEL -->
+      <div class="card card-wide">
+        <h2>Live Map</h2>
+        <div id="map"></div>
+        <div class="map-legend">
+          <span class="legend-item"><span class="legend-dot amb"></span>Ambulance</span>
+          <span class="legend-item"><span class="legend-dot sig-normal"></span>Intersection (Normal)</span>
+          <span class="legend-item"><span class="legend-dot sig-emergency"></span>Intersection (Emergency)</span>
+        </div>
+      </div>
+
+      <!-- AMBULANCE STATUS -->
+      <div class="card">
+        <h2>Ambulance Status</h2>
+        <div id="ambulance-status" class="kv">
+          <div><span class="k">Ambulance ID</span><span class="v" id="amb-id">--</span></div>
+          <div><span class="k">Driver</span><span class="v" id="amb-driver">--</span></div>
+          <div><span class="k">Mode</span><span class="v" id="amb-mode">--</span></div>
+          <div><span class="k">GPS</span><span class="v" id="amb-gps">--</span></div>
+          <div><span class="k">Satellites</span><span class="v" id="amb-sats">--</span></div>
+          <div><span class="k">Speed</span><span class="v" id="amb-speed">--</span></div>
+          <div><span class="k">Altitude</span><span class="v" id="amb-alt">--</span></div>
+          <div><span class="k">Location</span><span class="v" id="amb-location">--</span></div>
+          <div><span class="k">Last Update</span><span class="v" id="amb-time">--</span></div>
+          <div><span class="k">Firebase</span><span class="v" id="amb-fb">Connecting...</span></div>
+          <div><span class="k">WiFi</span><span class="v" id="amb-wifi">--</span></div>
+        </div>
+      </div>
+
+      <!-- INTERSECTIONS -->
+      <div class="card">
+        <h2>Traffic Intersections</h2>
+        <div id="intersections">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Distance</th>
+              </tr>
+            </thead>
+            <tbody id="intersections-body">
+              <!-- populated by script -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SPEED CHART -->
+      <div class="card">
+        <h2>Speed (km/h)</h2>
+        <canvas id="speedChart" height="160"></canvas>
+      </div>
+
+      <!-- LOGS -->
+      <div class="card card-wide">
+        <h2>System Logs</h2>
+        <div id="logs" class="logs-container">
+          <p>System initialized...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Chart.js for speed history -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Use ES modules for Firebase wiring -->
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
